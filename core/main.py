@@ -3,9 +3,9 @@ from elasticsearch import Elasticsearch
 from loguru import logger
 import json
 
-#-----------------------------
+# -----------------------------
 # API key = 9Z5P8Q65555NYU47
-#-----------------------------
+# -----------------------------
 
 # replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
 url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IBM&apikey=9Z5P8Q65555NYU47'
