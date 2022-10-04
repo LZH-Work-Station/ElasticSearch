@@ -14,7 +14,7 @@ class TestCases(unittest.TestCase):
 
     def test02(self):
         es = EsConnector()
-        data = DailyPrice("IBM", "2022-09-27")
+        data = DailyPrice("IBM", "2022-09-27g")
 
         resp = es.index("test-index", data)
 
