@@ -14,7 +14,7 @@ class EsConnector:
         self.ip_address = config.get("es").get("ip_address")
         self.port = config.get("es").get("port")
         self.es = self.getConnection()
-        self.md5 = EncodeBase64()
+        self.md5 = EncodeMD5()
 
     def getConnection(self):
         es = Elasticsearch("http://" + self.ip_address + ":" + str(self.port))
