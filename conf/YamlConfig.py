@@ -1,5 +1,6 @@
 import yaml
 
+
 class YamlConfig:
     yaml_path = "../conf/application.yml"
 
@@ -9,4 +10,3 @@ class YamlConfig:
         config = yaml.load(file.read(), Loader=yaml.FullLoader)
         file.close()
         self.config = config
-

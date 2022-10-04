@@ -1,5 +1,9 @@
 es:
+<<<<<<< HEAD
   ip_address: 172.20.10.4
+=======
+  ip_address: 192.168.231.138
+>>>>>>> main
   port: 9200
 
 alphavantage:

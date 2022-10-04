@@ -1,5 +1,6 @@
 import json
 import unittest
+import hashlib
 
 from db.EsConnector import EsConnector
 from entity.DailyPrice import *
@@ -12,17 +13,13 @@ class TestCases(unittest.TestCase):
 
     def test02(self):
         es = EsConnector()
-        data = DailyPrice("IBM", "2022-10-03")
-        data_in_json = json.dumps(data, default=lambda obj: obj.__dict__)
-        resp = es.index(index="test-index", id="13", document=data_in_json)
-
-
+        data = DailyPrice("IBM", "2022-09-27")
+        resp = es.index("test-index", data)
 
     def test03(self):
-        url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=9Z5P8Q65555NYU47'
-        r = requests.get(url)
-        data = r.json()
+        print("abc")
 
-        print(data)
-
+    def test04(self):
+        password = 'abc123'
+        SALE = password[:4]  # 取密码的前4位
 
