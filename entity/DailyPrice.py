@@ -22,7 +22,7 @@ class DailyPrice:
     def get_daily_price(self, url):
         r = requests.get(url)
         data = r.json()
-        self.daily_price_data = self.DailyPriceData(data.get("Time Series (Daily)").get(self.date))
+        self.data = self.DailyPriceData(data.get("Time Series (Daily)").get(self.date))
 
     class DailyPriceData:
         def __init__(self, data):
