@@ -1,9 +1,9 @@
-from db.EsConnector import EsConnector
-from loguru import logger
-import requests
-from entity.DailyPrice import *
-import unittest
 import json
+import unittest
+
+from db.EsConnector import EsConnector
+from entity.DailyPrice import *
+
 
 # 单元测试类测试代码
 class TestCases(unittest.TestCase):
@@ -14,6 +14,8 @@ class TestCases(unittest.TestCase):
         es = EsConnector()
         data = DailyPrice("IBM", "2022-10-03")
         data_in_json = json.dumps(data, default=lambda obj: obj.__dict__)
-        resp = es.index(index="test-index", id="12", document=data_in_json)
+        resp = es.index(index="test-index", id="13", document=data_in_json)
+
+
 
 
