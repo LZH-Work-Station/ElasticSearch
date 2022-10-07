@@ -3,7 +3,7 @@ import hashlib
 from db.EsConnector import EsConnector
 from loguru import logger
 import requests
-from entity.DailyPrice import *
+from entity.DailyPriceOfCompany import *
 import unittest
 import json
 
@@ -15,7 +15,7 @@ class TestCases(unittest.TestCase):
 
     def test02(self):
         es = EsConnector()
-        data = DailyPrice("IBM", "2022-09-27g")
+        data = DailyPriceOfCompany("IBM", "2022-09-27")
         resp = es.index("test-index", data)
 
     def test03(self):
