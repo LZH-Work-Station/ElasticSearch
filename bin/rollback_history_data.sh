@@ -10,8 +10,8 @@ if [ $# -eq 1 ]; then
 fi
 
 if [ $# -eq 0 ]; then
-    begin_date="2016-09-07"
-    end_date="2017-02-26"
+    begin_date="20160907"
+    end_date="20170226"
 
     while [ "$begin_date" -le "$end_date" ];
     do
