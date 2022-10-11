@@ -1,6 +1,7 @@
 es:
-  ip_address: 192.168.231.138
+  ip_address: 172.20.10.2
   port: 9200
 
 alphavantage:
-  apikey: 9Z5P8Q65555NYU47
+  apikey: 9Z5P8Q65555NYU47\
+  url: https://www.alphavantage.co/query?

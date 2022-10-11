@@ -4,6 +4,7 @@ from db.EsConnector import EsConnector
 from loguru import logger
 import requests
 from entity.DailyPriceOfCompany import *
+from entity.IntradayPriceOfCompany import *
 import unittest
 import json
 
@@ -24,3 +25,8 @@ class TestCases(unittest.TestCase):
     def test04(self):
         password = 'abc123'
         SALE = password[:4]  # 取密码的前4位
+
+    def test20(self):
+        es = EsConnector()
+        data = IntradayPriceOfCompany('IBM', '15min')
+        resp = es.index('test-intraday', data)
