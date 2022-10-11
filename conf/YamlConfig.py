@@ -2,7 +2,7 @@ import yaml
 
 
 class YamlConfig:
-    yaml_path = "conf/application.yml"
+    yaml_path = "../conf/application.yml"
 
     # 读取yaml配置文件
     def __init__(self):

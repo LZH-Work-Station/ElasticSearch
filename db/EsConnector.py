@@ -34,7 +34,7 @@ class EsConnector:
     def indexIntraday(self, index, data):
         try:
             data_in_json = json.dumps(data, default=lambda obj: obj.__dict__)
-            id = self.md5.getMD5(data.type, data.date, data.company, data.interval)
+            id = self.md5.getMD5Intraday(data.type, data.date, data.company, data.interval)
             logger.info("Insert to ES by metadata index: " + index + ", id: " + id + ", data: " + data_in_json)
             resp = self.es.index(index=index, id=id, document=data_in_json)
             logger.info(resp)

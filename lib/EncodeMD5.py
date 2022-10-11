@@ -6,6 +6,6 @@ class EncodeMD5:
         md = hashlib.md5((type + date + company).encode())
         return md.hexdigest()
 
-    def getMD5(self, type, date, company, interval):
+    def getMD5Intraday(self, type, date, company, interval):
         md = hashlib.md5((type + date + company + interval).encode())
         return md.hexdigest()
