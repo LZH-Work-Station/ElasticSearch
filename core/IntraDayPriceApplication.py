@@ -9,5 +9,5 @@ if __name__ == '__main__':
     for company in target_company:
         data = IntradayPriceOfCompany(company, "15min", date)
         if data.data is not None:
-            resp = es.index("test-intraday", data)
+            resp = es.indexIntraday("test-intraday", data)
 
