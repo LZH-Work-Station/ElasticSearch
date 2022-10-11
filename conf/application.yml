@@ -4,3 +4,4 @@ es:
 
 alphavantage:
   apikey: 9Z5P8Q65555NYU47
+  url: https://www.alphavantage.co/query?
