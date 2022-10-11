@@ -3,13 +3,14 @@ from conf.YamlConfig import *
 from loguru import logger
 
 
-class DailyPrice:
+class DailyPriceOfCompany:
 
     def __init__(self, company, date):
         self.company = company
         self.date = date
         self.type = "daily_price"
         url = self.generate_request_url()
+        self.data = None
         self.get_daily_price(url)
 
     def generate_request_url(self):
@@ -22,9 +23,14 @@ class DailyPrice:
     def get_daily_price(self, url):
         r = requests.get(url)
         data = r.json()
-        self.data = self.DailyPriceData(data.get("Time Series (Daily)").get(self.date))
+        try:
+            self.data = self.DailyPriceOfCompanyData(data.get("Time Series (Daily)").get(self.date))
+        except Exception as e:
+            logger.warning(
+                "Can not get the daily price of " + self.company + " and date = " + self.date + " with the error: " + str(
+                    e))
 
-    class DailyPriceData:
+    class DailyPriceOfCompanyData:
         def __init__(self, data):
             self.open_price = float(data.get("1. open"))
             self.highest_price = float(data.get("2. high"))
