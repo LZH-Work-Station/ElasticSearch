@@ -15,7 +15,7 @@ class DailyPriceOfCompany:
 
     def generate_request_url(self):
         config = YamlConfig().config
-        url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={company}&apikey={apikey}' \
+        url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=full&symbol={company}&apikey={apikey}' \
             .format(company=self.company, apikey=config.get("alphavantage").get("apikey"))
         logger.info("Request forward alphavantage for dailySeries of company: " + self.company + " with url: " + url)
         return url
