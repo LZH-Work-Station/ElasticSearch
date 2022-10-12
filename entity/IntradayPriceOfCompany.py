@@ -20,7 +20,7 @@ class IntradayPriceOfCompany:
         url = '{api}function=TIME_SERIES_INTRADAY&outputsize=full&symbol={company}&interval={interval}&apikey={apikey}' \
             .format(api=config.get('alphavantage').get('url'), company=self.company, interval=self.interval,
                     apikey=config.get('alphavantage').get('apikey'))
-        logger.info('Request forward alphavantag4e for intradaySeries of company:' + self.company + 'with url' + url)
+        logger.info('Request forward alphavantag4e for intradaySeries of company:' + self.company + 'with url ' + url)
         return url
 
     '''
