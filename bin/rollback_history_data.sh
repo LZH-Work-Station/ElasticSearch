@@ -1,6 +1,7 @@
 #!/bin/bash
 
 PARENT_DIR=$(cd $(dirname $0);cd ..; pwd)
+YESTERDAY=$(date -d "yesterday" +%Y-%m-%d)
 
 if [ $# -eq 2 ]; then
   begin_date=$1
@@ -25,5 +26,6 @@ if [ $# -eq 1 ]; then
 fi
 
 if [ $# -eq 0 ]; then
-  echo "No args error"
+  python3.6 $PARENT_DIR/core/todayPriceApplication.py $YESTERDAY
+  python3.6 $PARENT_DIR/core/IntraDayPriceApplication.py $YESTERDAY
 fi
