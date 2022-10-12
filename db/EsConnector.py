@@ -4,7 +4,7 @@ from conf.YamlConfig import *
 from loguru import logger
 import os
 current_directory = os.path.dirname(os.path.abspath(__file__))
-logger.add(current_directory + "../log/out.log")
+logger.add(current_directory + "/../log/out.log")
 from elasticsearch import Elasticsearch
 from lib.EncodeMD5 import *
 
