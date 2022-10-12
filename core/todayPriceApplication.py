@@ -1,7 +1,7 @@
 import sys
 import time
-from conf.YamlConfig import YamlConfig
 sys.path.append('/home/lizehan/project/ElasticSearch')
+from conf.YamlConfig import YamlConfig
 from db.EsConnector import EsConnector
 from entity.DailyPriceOfCompany import DailyPriceOfCompany
 
