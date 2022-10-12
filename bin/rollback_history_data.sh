@@ -27,5 +27,6 @@ fi
 
 if [ $# -eq 0 ]; then
   python3.6 $PARENT_DIR/core/todayPriceApplication.py $YESTERDAY
+  echo 'python3.6 $PARENT_DIR/core/IntraDayPriceApplication.py $YESTERDAY'
   python3.6 $PARENT_DIR/core/IntraDayPriceApplication.py $YESTERDAY
 fi
