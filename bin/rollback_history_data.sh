@@ -8,8 +8,8 @@ if [ $# -eq 2 ]; then
     month=${begin_date:4:2}
     day=${begin_date:6:2}
     begin_date=$(date -d "${begin_date}+1days" +%Y%m%d)
-    python3.6 core/todayPrice.py $year-$month-$day
-    python3.6 core/IntraDayPriceApplication.py $year-$month-$day
+    python3.6 ../core/todayPriceApplication.py $year-$month-$day
+    python3.6 ../core/IntraDayPriceApplication.py $year-$month-$day
   done
 fi
 
@@ -18,8 +18,8 @@ if [ $# -eq 1 ]; then
   year=${date:0:4}
   month=${date:4:2}
   day=${date:6:2}
-  python3.6 core/todayPriceApplication.py $year-$month-$day
-  python3.6 core/IntraDayPriceApplication.py $year-$month-$day
+  python3.6 ../core/todayPriceApplication.py $year-$month-$day
+  python3.6 ../core/IntraDayPriceApplication.py $year-$month-$day
 fi
 
 if [ $# -eq 0 ]; then
