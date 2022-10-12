@@ -41,7 +41,3 @@ class EsConnector:
             self.es.index(index=index, id=id, document=data_in_json)
         except Exception as e:
             logger.error("Insert to ES failed with error: " + str(e))
-
-    # TODO 增加删改查
-    # 删除数据
-    #def delete(self, ):
