@@ -36,10 +36,8 @@ class IntradayPriceOfCompany:
         r = requests.get(url)
         data = r.json()
         try:
-            logger.info(self.data)
             self.data = self.IntradayPriceOfCompanyData(
                 data.get('Time Series ({interval})'.format(interval=self.interval)), self.date)
-            logger.info(data)
         except Exception as e:
             logger.warning(
                 "Can not get the daily price of " + self.company + " and date = " + self.date + " with the error: " + str(
