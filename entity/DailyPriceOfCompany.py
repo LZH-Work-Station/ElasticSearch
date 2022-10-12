@@ -3,6 +3,7 @@ from conf.YamlConfig import *
 from loguru import logger
 
 
+
 class DailyPriceOfCompany:
 
     def __init__(self, company, date):
