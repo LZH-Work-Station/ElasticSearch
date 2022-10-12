@@ -25,8 +25,10 @@ if [ $# -eq 1 ]; then
   year=${date:0:4}
   month=${date:4:2}
   day=${date:6:2}
-  python3.6 "$PARENT_DIR"/core/todayPriceApplication.py $year-$month-$day;
-  python3.6 "$PARENT_DIR"/core/IntraDayPriceApplication.py $year-$month-$day;
+  python3.6 "$PARENT_DIR"/core/todayPriceApplication.py $year-$month-$day
+  wait
+  python3.6 "$PARENT_DIR"/core/IntraDayPriceApplication.py $year-$month-$day
+  wait
 fi
 
 if [ $# -eq 0 ]; then
