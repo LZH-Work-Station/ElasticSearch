@@ -14,7 +14,7 @@ if [ $# -eq 3 ]; then
     month=${begin_date:4:2}
     day=${begin_date:6:2}
     begin_date=$(date -d "${begin_date}+1days" +%Y%m%d)
-    sh $PARENT_DIR/bin/executor.sh $year-$month-$day $1 $2 todayPriceApplication &
-    sh $PARENT_DIR/bin/executor.sh $year-$month-$day $1 $2 intraDayPriceApplication
+    sh $PARENT_DIR/bin/executor.sh $year-$month-$day $1 $2 todayPriceApplication.py &
+    sh $PARENT_DIR/bin/executor.sh $year-$month-$day $1 $2 intraDayPriceApplication.py
   done
 fi
