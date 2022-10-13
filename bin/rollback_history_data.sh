@@ -6,7 +6,7 @@ PARENT_DIR=$(
   pwd
 )
 
-if [ $# -eq 3 ]; then
+if [ $# -eq 2 ]; then
   begin_date=$1
   end_date=$2
   while [ "$begin_date" -le "$end_date" ]; do
