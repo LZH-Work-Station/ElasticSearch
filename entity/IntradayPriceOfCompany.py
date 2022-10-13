@@ -47,7 +47,7 @@ class IntradayPriceOfCompany:
                 data.get('Time Series ({interval})'.format(interval=self.interval)), self.date)
         except Exception as e:
             logger.warning(
-                "Can not get the intraday price of " + self.company + " and date = " + self.date + " with the error: " + data)
+                "Can not get the intraday price of " + self.company + " and date = " + self.date + " with the error: " + str(data))
 
     class IntradayPriceOfCompanyData:
         def __init__(self, data, date):

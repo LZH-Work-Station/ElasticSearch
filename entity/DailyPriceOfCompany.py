@@ -33,7 +33,7 @@ class DailyPriceOfCompany:
             self.data = self.DailyPriceOfCompanyData(data.get("Time Series (Daily)").get(self.date))
         except Exception as e:
             logger.warning(
-                "Can not get the daily price of " + self.company + " and date = " + self.date + " with the error: " + data)
+                "Can not get the daily price of " + self.company + " and date = " + self.date + " with the error: " + str(data))
 
     class DailyPriceOfCompanyData:
         def __init__(self, data):
