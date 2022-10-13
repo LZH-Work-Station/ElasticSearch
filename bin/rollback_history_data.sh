@@ -16,9 +16,7 @@ if [ $# -eq 2 ]; then
     day=${begin_date:6:2}
     begin_date=$(date -d "${begin_date}+1days" +%Y%m%d)
     python3.6 $PARENT_DIR/core/todayPriceApplication.py $year-$month-$day
-    wait
     python3.6 $PARENT_DIR/core/IntraDayPriceApplication.py $year-$month-$day
-    wait
   done
 fi
 
@@ -28,14 +26,10 @@ if [ $# -eq 1 ]; then
   month=${date:4:2}
   day=${date:6:2}
   python3.6 "$PARENT_DIR"/core/todayPriceApplication.py $year-$month-$day
-  wait
   python3.6 "$PARENT_DIR"/core/IntraDayPriceApplication.py $year-$month-$day
-  wait
 fi
 
 if [ $# -eq 0 ]; then
   python3.6 "$PARENT_DIR"/core/todayPriceApplication.py $YESTERDAY
-  wait
   python3.6 "$PARENT_DIR"/core/IntraDayPriceApplication.py $YESTERDAY
-  wait
 fi

@@ -3,7 +3,10 @@ es:
   port: 9200
 
 alphavantage:
-  apikey: 9Z5P8Q65555NYU47
+  apikey:
+    - 9Z5P8Q65555NYU47
+    - R90YBA1SXDJH1E34
+    - 2QMA8UENCX9LX7ZR
   url: https://www.alphavantage.co/query?
 
 companys:
