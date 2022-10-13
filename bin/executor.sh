@@ -15,6 +15,7 @@ if [ $# -eq 3 ]; then
     month=${begin_date:4:2}
     day=${begin_date:6:2}
     begin_date=$(date -d "${begin_date}+1days" +%Y%m%d)
+    echo $3
     python3.6 $PARENT_DIR/core/$3 $year-$month-$day
   done
 fi
