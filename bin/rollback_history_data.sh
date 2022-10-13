@@ -7,6 +7,6 @@ PARENT_DIR=$(
 )
 
 if [ $# -eq 2 ]; then
-  sh $PARENT_DIR/bin/executor.sh $1 $2 todayPriceApplication.py &
-  sh $PARENT_DIR/bin/executor.sh $1 $2 intraDayPriceApplication.py
+  sh $PARENT_DIR/bin/executor.sh $1 $2 TodayPriceApplication.py &
+  sh $PARENT_DIR/bin/executor.sh $1 $2 IntraDayPriceApplication.py
 fi
