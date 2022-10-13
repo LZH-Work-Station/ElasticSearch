@@ -1,3 +1,5 @@
+import time
+
 import requests
 from conf.YamlConfig import *
 from loguru import logger
@@ -25,6 +27,10 @@ class DailyPriceOfCompany:
         r = requests.get(url)
         data = r.json()
         try:
+            while 'Note' in data.keys():
+                time.sleep(30)
+                r = requests.get(url)
+                data = r.json()
             self.data = self.DailyPriceOfCompanyData(data.get("Time Series (Daily)").get(self.date))
         except Exception as e:
             logger.warning(
