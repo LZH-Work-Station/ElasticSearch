@@ -7,6 +7,7 @@ PARENT_DIR=$(
 )
 
 if [ $# -eq 2 ]; then
+  echo "123"
   begin_date=$1
   end_date=$2
   while [ "$begin_date" -le "$end_date" ]; do
