@@ -15,8 +15,8 @@ if [ $# -eq 2 ]; then
     month=${begin_date:4:2}
     day=${begin_date:6:2}
     begin_date=$(date -d "${begin_date}+1days" +%Y%m%d)
-    python3.6 $PARENT_DIR/core/todayPriceApplication.py $year-$month-$day &
-    python3.6 $PARENT_DIR/core/IntraDayPriceApplication.py $year-$month-$day &
+    python3.6 $PARENT_DIR/core/todayPriceApplication.py $year-$month-$day
+    python3.6 $PARENT_DIR/core/IntraDayPriceApplication.py $year-$month-$day
   done
 fi
 
@@ -25,11 +25,11 @@ if [ $# -eq 1 ]; then
   year=${date:0:4}
   month=${date:4:2}
   day=${date:6:2}
-  python3.6 "$PARENT_DIR"/core/todayPriceApplication.py $year-$month-$day &
-  python3.6 "$PARENT_DIR"/core/IntraDayPriceApplication.py $year-$month-$day &
+  python3.6 "$PARENT_DIR"/core/todayPriceApplication.py $year-$month-$day
+  python3.6 "$PARENT_DIR"/core/IntraDayPriceApplication.py $year-$month-$day
 fi
 
 if [ $# -eq 0 ]; then
-  python3.6 "$PARENT_DIR"/core/todayPriceApplication.py $YESTERDAY &
-  python3.6 "$PARENT_DIR"/core/IntraDayPriceApplication.py $YESTERDAY &
+  python3.6 "$PARENT_DIR"/core/todayPriceApplication.py $YESTERDAY
+  python3.6 "$PARENT_DIR"/core/IntraDayPriceApplication.py $YESTERDAY
 fi
