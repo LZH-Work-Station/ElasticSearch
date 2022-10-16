@@ -5,6 +5,7 @@ from loguru import logger
 import requests
 from entity.DailyPriceOfCompany import *
 from entity.IntradayPriceOfCompany import *
+from entity.InfoOfCompany import *
 import unittest
 import json
 
@@ -30,3 +31,8 @@ class TestCases(unittest.TestCase):
         es = EsConnector()
         data = IntradayPriceOfCompany('IBM', '15min', '2022-10-03')
         resp = es.indexIntraday('test-intraday', data)
+
+    def test21(self):
+        es = EsConnector()
+        data = InfoOfCompany('IBM')
+        resp = es.indexCompany('test-company', data)
