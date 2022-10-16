@@ -14,6 +14,7 @@ class InfoOfCompany:
         #url_cash = self.generate_request_cash_url()
         #self.data = self.CompanyInfoData(url_overview, url_income, url_balance, url_cash, self.company)
         self.data = None
+        self.get_overview(url_overview,self.company)
 
 
     def generate_request_overview_url(self):

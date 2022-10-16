@@ -40,6 +40,7 @@ class EsConnector:
             logger.info(resp)
         except Exception as e:
             logger.error("Insert to ES failed with error: " + str(e))
+
     def indexCompany(self, index, data):
         try:
             data_in_json = json.dumps(data, default=lambda obj: obj.__dict__)
