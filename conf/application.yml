@@ -1,5 +1,5 @@
 es:
-  ip_address: 192.168.231.146
+  ip_address: 47.98.255.147
   port: 9200
 
 alphavantage:
@@ -109,4 +109,4 @@ companys:
   - DOYU
   - ZH
   - XIACY
-  - SHI
+  - SHIw

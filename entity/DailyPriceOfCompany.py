@@ -15,12 +15,19 @@ class DailyPriceOfCompany:
         self.data = None
         self.get_daily_price(url)
 
+    def __init__(self, company, date, data):
+        self.data = data
+        self.type = "daily_price"
+        self.company = company
+        self.date = date
+
     def generate_request_url(self):
         config = YamlConfig().config
         url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=full&symbol={company}&apikey={apikey}' \
             .format(company=self.company, apikey=config.get("alphavantage").get("apikey")[0])
         logger.info("Request forward alphavantage for dailySeries of company: " + self.company + " with url: " + url)
         return url
+
 
     def get_daily_price(self, url):
         r = requests.get(url)
