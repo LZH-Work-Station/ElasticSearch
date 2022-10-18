@@ -29,7 +29,7 @@ class TestCases(unittest.TestCase):
 
     def test20(self):
         es = EsConnector()
-        data = IntradayPriceOfCompany('IBM', '15min', '2022-10-03')
+        data = IntradayPriceOfCompany('IBM', '15min', '2022-10-05')
         resp = es.indexIntraday('test-intraday', data)
 
     def test21(self):

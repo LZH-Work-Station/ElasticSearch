@@ -1,8 +1,9 @@
 import yaml
-
+import os
+current_directory = os.path.dirname(os.path.abspath(__file__))
 
 class YamlConfig:
-    yaml_path = "../conf/application.yml"
+    yaml_path = current_directory + "/../conf/application.yml"
 
     # 读取yaml配置文件
     def __init__(self):

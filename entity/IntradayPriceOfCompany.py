@@ -1,3 +1,5 @@
+import time
+
 import requests
 from conf.YamlConfig import *
 from loguru import logger
@@ -19,8 +21,8 @@ class IntradayPriceOfCompany:
         config = YamlConfig().config
         url = '{api}function=TIME_SERIES_INTRADAY&outputsize=full&symbol={company}&interval={interval}&apikey={apikey}' \
             .format(api=config.get('alphavantage').get('url'), company=self.company, interval=self.interval,
-                    apikey=config.get('alphavantage').get('apikey'))
-        logger.info('Request forward alphavantag4e for intradaySeries of company:' + self.company + 'with url' + url)
+                    apikey=config.get('alphavantage').get('apikey')[1])
+        logger.info('Request forward alphavantag4e for intradaySeries of company:' + self.company + ' with url: ' + url)
         return url
 
     '''
@@ -36,12 +38,16 @@ class IntradayPriceOfCompany:
         r = requests.get(url)
         data = r.json()
         try:
+            # 代表一分鐘内請求次數過多，導致問題出現，需要等待60s
+            while 'Note' in data.keys():
+                time.sleep(30)
+                r = requests.get(url)
+                data = r.json()
             self.data = self.IntradayPriceOfCompanyData(
                 data.get('Time Series ({interval})'.format(interval=self.interval)), self.date)
         except Exception as e:
             logger.warning(
-                "Can not get the daily price of " + self.company + " and date = " + self.date + " with the error: " + str(
-                    e))
+                "Can not get the intraday price of " + self.company + " and date = " + self.date + " with the error: " + str(data.keys()))
 
     class IntradayPriceOfCompanyData:
         def __init__(self, data, date):
@@ -51,4 +57,3 @@ class IntradayPriceOfCompany:
                 if key[:10] == date:
                     # 增加算法优化数据
                     self.price_per_gap.append({'time': key[11:], 'price': data[key]['1. open']})
-
