@@ -32,4 +32,3 @@ if __name__ == '__main__':
     file_input = open(current_directory + '/../conf/initial.txt', mode='r', encoding='utf-8')
     file_output = open(current_directory + '/../conf/company_symbole.txt', mode='w', encoding='utf-8')
     write_key_in_file(file_output, search_key(file_input))
-`
