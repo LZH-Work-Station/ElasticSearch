@@ -15,12 +15,12 @@ class EsConnector:
         config = YamlConfig().config
         logger.info("Get ES configuration: " + str(config))
         self.ip_address = config.get("es").get("ip_address")
-        self.port = config.get("es").get("port")
+        # self.port = config.get("es").get("port")
         self.es = self.getConnection()
         self.md5 = EncodeMD5()
 
     def getConnection(self):
-        es = Elasticsearch("http://" + self.ip_address + ":" + str(self.port))
+        es = Elasticsearch(hosts=self.ip_address)
         logger.info("Connect to ES successfully")
         return es
 
@@ -28,8 +28,8 @@ class EsConnector:
         try:
             data_in_json = json.dumps(data, default=lambda obj: obj.__dict__)
             id = self.md5.getMD5(data.type, data.date, data.company)
+            resp = self.es.index(index=index, id=id, document=data_in_json)
             logger.info("Insert to ES by metadata index: " + index + ", id: " + id + ", data: " + data_in_json)
-            self.es.index(index=index, id=id, document=data_in_json)
         except Exception as e:
             logger.error("Insert to ES failed with error: " + str(e))
 

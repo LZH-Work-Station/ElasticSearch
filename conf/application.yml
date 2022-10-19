@@ -1,6 +1,16 @@
 es:
-  ip_address: 47.98.255.147
-  port: 9200
+  ip_address:
+    - http://tc405-112-01.insa-lyon.fr:9400
+    - http://tc405-112-02.insa-lyon.fr:9400
+    - http://tc405-112-03.insa-lyon.fr:9400
+    - http://tc405-112-04.insa-lyon.fr:9400
+    - http://tc405-112-05.insa-lyon.fr:9400
+    - http://tc405-112-06.insa-lyon.fr:9400
+    - http://tc405-112-07.insa-lyon.fr:9400
+    - http://tc405-112-08.insa-lyon.fr:9400
+    - http://tc405-112-09.insa-lyon.fr:9400
+    - http://tc405-112-11.insa-lyon.fr:9400
+    - http://tc405-112-12.insa-lyon.fr:9400
 
 alphavantage:
   apikey:
