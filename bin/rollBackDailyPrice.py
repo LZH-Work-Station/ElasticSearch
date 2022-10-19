@@ -12,7 +12,7 @@ def get_history_price():
     target_company = YamlConfig().config.get("companys")
     es = EsConnector()
     rangeDate = RangeDate()
-    dates = rangeDate.get_date_iter("2018-12-12", "2022-10-18")
+    dates = rangeDate.get_date_iter("2019-01-01", "2022-10-18")
     pool = ThreadPoolExecutor(max_workers=8)
     for company in target_company:
         url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=full&symbol={company}&apikey=B7MFHYK85TIZ85G3".format(
@@ -33,7 +33,7 @@ def insert_into_es(data, es, company, date):
     try:
         daily_company_data = DailyPriceOfCompany.DailyPriceOfCompanyData(data.get("Time Series (Daily)").get(date))
         daily_data = DailyPriceOfCompany(company, date, daily_company_data)
-        es.index("test_stockmanager", daily_data)
+        es.index("stockmanager", daily_data)
     except Exception as e:
         logger.warning(
             "Can not get the daily price of " + company + " and date = " + date + " with the error: " + str(
