@@ -37,8 +37,8 @@ class EsConnector:
         try:
             data_in_json = json.dumps(data, default=lambda obj: obj.__dict__)
             id = self.md5.getMD5Intraday(data.type, str(data.date), data.company, data.interval)
-            logger.info("Insert to ES by metadata index: " + index + ", id: " + id + ", data: " + data_in_json)
             self.es.index(index=index, id=id, document=data_in_json)
+            logger.info("Insert to ES by metadata index: " + index + ", id: " + id + ", data: " + data_in_json)
         except Exception as e:
             logger.error("Insert to ES failed with error: " + str(e))
 

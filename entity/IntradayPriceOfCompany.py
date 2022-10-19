@@ -27,6 +27,7 @@ class IntradayPriceOfCompany:
         return url
 
     def get_intraday_price(self, url):
+        logger.info('before get_intraday_price')
         r = requests.get(url)
         data = r.json()
         logger.info('get_intraday_price')
@@ -37,6 +38,7 @@ class IntradayPriceOfCompany:
                 r = requests.get(url)
                 data = r.json()
             data_per_gap = data.get('Time Series ({interval})'.format(interval=self.interval))
+            logger.info('Got the intraday price of company'+self.company+'and date'+self.date+'from Api')
             for key in data_per_gap.keys():
                 if key[:10] == self.date:
                     #logger.info(key)
