@@ -14,16 +14,16 @@ def get_history_price():
     config = YamlConfig().config
     es = EsConnector()
     rangeDate = RangeDate()
-    dates = rangeDate.get_date_iter("2022-09-18","2022-10-18")
+    dates = rangeDate.get_date_iter("2022-09-22","2022-10-21")
     pool = ThreadPoolExecutor(max_workers=8)
     for company in target_company:
         url = '{api}function=TIME_SERIES_INTRADAY&outputsize=full&symbol={company}&interval={interval}&apikey={apikey}' \
             .format(api=config.get('alphavantage').get('url'), company=company, interval=interval,
-                    apikey=config.get('alphavantage').get('apikey')[1])
+                    apikey=config.get('alphavantage').get('apikey')[0])
         logger.info('Request forward alphavantage for intradaySeries of company:' + company + ' with url: ' + url)
         r = requests.get(url)
         data = r.json()
-        logger.info('continue')
+        #logger.info('continue')
         while 'Note' in data.keys():
             time.sleep(30)
             r = requests.get(url)
