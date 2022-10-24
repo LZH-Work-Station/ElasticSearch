@@ -23,24 +23,25 @@ class DailyPriceOfCompany:
 
     def generate_request_url(self):
         config = YamlConfig().config
+        api_list = config.get("alphavantage").get("apikey")
         url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=full&symbol={company}&apikey={apikey}' \
-            .format(company=self.company, apikey=config.get("alphavantage").get("apikey")[0])
+            .format(company=self.company, apikey=api_list[index])
         logger.info("Request forward alphavantage for dailySeries of company: " + self.company + " with url: " + url)
         return url
-
 
     def get_daily_price(self, url):
         r = requests.get(url)
         data = r.json()
         try:
             while 'Note' in data.keys():
-                time.sleep(30)
+                index = index % len(api_list)
                 r = requests.get(url)
                 data = r.json()
             self.data = self.DailyPriceOfCompanyData(data.get("Time Series (Daily)").get(self.date))
         except Exception as e:
             logger.warning(
-                "Can not get the daily price of " + self.company + " and date = " + self.date + " with the error: " + str(data.keys()))
+                "Can not get the daily price of " + self.company + " and date = " + self.date + " with the error: " + str(
+                    data.keys()))
 
     class DailyPriceOfCompanyData:
         def __init__(self, data):

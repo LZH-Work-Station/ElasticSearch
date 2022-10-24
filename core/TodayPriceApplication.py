@@ -12,8 +12,8 @@ if __name__ == '__main__':
     es = EsConnector()
     for company in target_company:
         data = DailyPriceOfCompany(company, date)
-        if (data.data is not None):
-            resp = es.index("elk_project_index", data)
+        if data.data is not None:
+            resp = es.index("stockmanager", data)
 
 
 

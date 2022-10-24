@@ -6,6 +6,7 @@ from loguru import logger
 import json
 from datetime import datetime
 
+
 class IntradayPriceOfCompany:
 
     def __init__(self, company, interval, date):
@@ -16,7 +17,6 @@ class IntradayPriceOfCompany:
         url = self.generate_request_url()
         self.data = []
         self.get_intraday_price(url)
-
 
     def generate_request_url(self):
         config = YamlConfig().config
@@ -38,15 +38,16 @@ class IntradayPriceOfCompany:
                 r = requests.get(url)
                 data = r.json()
             data_per_gap = data.get('Time Series ({interval})'.format(interval=self.interval))
-            logger.info('Got the intraday price of company'+self.company+'and date'+self.date+'from Api')
+            logger.info('Got the intraday price of company' + self.company + 'and date' + self.date + 'from Api')
             for key in data_per_gap.keys():
                 if key[:10] == self.date:
-                    #logger.info(key)
+                    # logger.info(key)
                     self.data.append(self.IntradayPriceOfCompanyData(key, data_per_gap[key],
                                                                      self.company, self.interval, self.type))
         except Exception as e:
             logger.warning(
-                "Can not get the intraday price of " + self.company + " and date = " + self.date + " with the error: " + str(data.keys()))
+                "Can not get the intraday price of " + self.company + " and date = " + self.date + " with the error: " + str(
+                    data.keys()))
 
     class IntradayPriceOfCompanyData:
         def __init__(self, time, data, company, interval, type):
@@ -54,19 +55,18 @@ class IntradayPriceOfCompany:
             self.interval = interval
             self.type = type
 
-            const = 2*60*60*1000
+            const = 2 * 60 * 60 * 1000
             dd = datetime.strptime(time, "%Y-%m-%d %H:%M:%S").timestamp()
-            self.date = dd*1000+const
+            self.date = dd * 1000 + const
 
             self.data = self.BasicIntradayPriceOfCompanyData(data)
 
         class BasicIntradayPriceOfCompanyData:
-            def __init__(self,data):
+            def __init__(self, data):
                 self.open_price = float(data['1. open'])
                 self.high_price = float(data['2. high'])
                 self.low_price = float(data['3. low'])
                 self.close_price = float(data['4. close'])
-
 
 # class IntradayPriceOfCompany:
 #
@@ -124,4 +124,3 @@ class IntradayPriceOfCompany:
 #                                                'high_price': float(data[key]['2. high']),
 #                                                'low_price': float(data[key]['3. low']),
 #                                                'close_price': float(data[key]['4. close'])})
-

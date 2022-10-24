@@ -20,19 +20,11 @@ if [ $# -eq 3 ]; then
   done
 fi
 
-if [ $# -eq 2 ]; then
-  date=$1
+if [ $# -eq 0 ]; then
+  date=$YESTERDAY
   year=${date:0:4}
   month=${date:4:2}
   day=${date:6:2}
-  python3.6 $PARENT_DIR/core/$3 $year-$month-$day
-
-fi
-
-if [ $# -eq 1 ]; then
-  python3.6 $PARENT_DIR/core/$3 $year-$month-$day
-fi
-
-if [ $# -eq 1 ]; then
-  echo 'args error'
+  python3.6 $PARENT_DIR/bin/rollBackDailyPrice.py $year-$month-$day $year-$month-$day
+  python3.6 $PARENT_DIR/bin/rollBackIntradayPrice.py $year-$month-$day $year-$month-$day
 fi

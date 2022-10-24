@@ -11,6 +11,6 @@ if __name__ == '__main__':
     date = sys.argv[1]
     es = EsConnector()
     for company in target_company:
-        data = IntradayPriceOfCompany(company, "15min", date)
+        data = IntradayPriceOfCompany(company, "5min", date)
         if data.data is not None:
-            resp = es.indexIntraday("elk_project_index", data)
+            resp = es.indexIntraday("stockmanager", data)

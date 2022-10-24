@@ -14,6 +14,8 @@ class RangeDate:
         """
         dt = datetime.datetime.strptime(start_date, '%Y-%m-%d')
         list_date = []
+        date = dt.strftime("%Y-%m-%d")
+        list_date.append(date)
         end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d')
         while dt < end_date:
             dt = dt + datetime.timedelta(days=1)
