@@ -1,5 +1,5 @@
 import sys
-import time
+sys.path.append('/home/lizehan/project/ElasticSearch')
 from concurrent.futures import ThreadPoolExecutor
 import requests
 from loguru import logger
