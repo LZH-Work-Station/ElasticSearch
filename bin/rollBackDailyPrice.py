@@ -40,7 +40,6 @@ def get_history_price():
         for date in dates:
             logger.info(date)
             pool.submit(insert_into_es, data, es, company, date)
-        break
 
 
 
