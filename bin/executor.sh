@@ -16,5 +16,5 @@ fi
 
 if [ $# -eq 0 ]; then
   python3.6 $PARENT_DIR/bin/rollBackDailyPrice.py $YESTERDAY $YESTERDAY;
-  python3.6 $PARENT_DIR/bin/rollBackIntradayPrice.py $YESTERDAY $YESTERDAY;
+#  python3.6 $PARENT_DIR/bin/rollBackIntradayPrice.py $YESTERDAY $YESTERDAY;
 fi
